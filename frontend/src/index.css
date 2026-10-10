@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: #eef1f5;
+  color: #16212e;
+  -webkit-font-smoothing: antialiased;
+}
+.dark body { background: #0a1017; color: #dbe5ef; }
+
+@layer components {
+  .panel {
+    @apply rounded-md border border-slate-300/80 bg-white dark:border-ink-600 dark:bg-ink-800;
+  }
+  .panel-head {
+    @apply flex items-center justify-between gap-2 border-b border-slate-200 px-3 py-2
+           text-[11px] font-semibold uppercase tracking-[0.12em] text-slate-500
+           dark:border-ink-600 dark:text-slate-400;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded border border-slate-300
+           bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 transition
+           hover:border-slate-400 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-45
+           dark:border-ink-500 dark:bg-ink-700 dark:text-slate-200 dark:hover:bg-ink-600;
+  }
+  .btn-primary {
+    @apply border-signal bg-signal text-white hover:border-signal hover:bg-[#158ba0]
+           dark:border-signal dark:bg-signal dark:text-white dark:hover:bg-[#158ba0];
+  }
+  .btn-danger {
+    @apply border-crit/40 text-crit hover:bg-crit/10 dark:border-crit/50 dark:text-crit;
+  }
+  .field {
+    @apply w-full rounded border border-slate-300 bg-white px-2 py-1.5 text-xs text-slate-800
+           outline-none focus:border-signal focus:ring-1 focus:ring-signal/40
+           dark:border-ink-500 dark:bg-ink-700 dark:text-slate-100;
+  }
+  .lbl {
+    @apply mb-1 block text-[10px] font-semibold uppercase tracking-[0.1em] text-slate-500 dark:text-slate-400;
+  }
+  .num { @apply font-mono tabular-nums; }
+  .tab {
+    @apply border-b-2 border-transparent px-3 py-2 text-xs font-medium text-slate-500
+           hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-100;
+  }
+  .tab-active { @apply border-signal text-slate-900 dark:text-white; }
+}
+
+/* React Flow theming */
+.react-flow__attribution { display: none; }
+.dark .react-flow__controls-button {
+  background: #16212e; border-bottom: 1px solid #2b3d52; fill: #dbe5ef;
+}
+.dark .react-flow__controls-button:hover { background: #1e2c3c; }
+.react-flow__handle { width: 7px; height: 7px; border: none; background: #64748b; }
+.react-flow__edge.selected .rf-link { stroke-width: 4; }
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: #c2ccd8; border-radius: 6px; }
+.dark ::-webkit-scrollbar-thumb { background: #2b3d52; }
